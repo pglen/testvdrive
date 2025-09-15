@@ -19,6 +19,7 @@ Where the items are:
    Context_String,     Send_String,   Expect_String,   Find/Compare
    -----------------   ------------   --------------   ------------
    info for the user   what to send   what to expect   True if Find
+                                                       False if Match
 Example test case file:
 [
     [ "Echo Command", "", "", True],         # NOOP
@@ -31,11 +32,11 @@ FindStr field accepts:
         ----        ---------   ----------    -----------
         Find str    Match str   Find regex    Match regex'''
 
-VERSION = "1.2.1"
+VERSION = "1.2.3"
 def_testfile = "testcase.txt"
 
 def pp(strx):
-    return "'" + strx + ";"
+    return "'" + str(strx) + "'"
 
 # ------------------------------------------------------------------------
 # Print( an exception as the system would print it)
@@ -59,6 +60,8 @@ def print_exception(xstr):
 def strdiff(expectx, actualx):
 
     ''' Rudimentary info on string differences '''
+
+    print("strdiff()", str(expectx), str(actualx))
 
     strx = ""
     for cnt, bb in enumerate(expectx):
@@ -155,9 +158,11 @@ def send_expect(context, sendx, expectx, findflag):
             print("\033[34;1mExpected:\033[0m\n", expectx)
 
     if args.verbose > 3:
-        if ret != expectx:
-            print("\033[34;1mDiff:\033[0m\n",
-                strdiff(ret, expectx))
+        print("\033[34;1mSend\033[0m:", pp(sendx))
+        #if ret != expectx:
+        #    print("\033[34;1mDiff:\033[0m\n",
+        #        strdiff(ret, expectx))
+
     return err
 
 def mainloop():
