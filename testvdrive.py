@@ -31,7 +31,7 @@ FindStr field accepts:
         ----        ---------   ----------    -----------
         Find str    Match str   Find regex    Match regex'''
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 def_testfile = "testcase.txt"
 
 def pp(strx):

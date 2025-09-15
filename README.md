@@ -60,7 +60,6 @@ executed by default.
 
     The source can be found on:
 
-        https://github.com/pglen
-
+        https://github.com/pglen/testvdrive
 
 // EOF
