@@ -34,27 +34,27 @@ The test case file contains the test instructions, one line per test. The format
 
 ### Help from command line:
 
- usage: testvdrive [-h] [-V] [-o] [-A] [-v] [-d DEBUGLEV] [-l FILL] [-s]
-                  [test_cases ...]
+     usage: testvdrive [-h] [-V] [-o] [-A] [-v] [-d DEBUGLEV] [-l FILL] [-s]
+                      [test_cases ...]
 
-Test withh send/expect by executing sub commands from test case scripts.
+    Test with send/expect by executing sub commands from test case scripts.
 
-positional arguments:
-  test_cases            Test case file names to execute
+    positional arguments:
+      test_cases            Test case file names to execute
 
-options:
-  -h, --help            show this help message and exit
-  -V, --version         Show version number
-  -o, --outp            Show communication with program
-  -A, --info            Show testcase file format info
-  -v, --verbose         increase verbocity (Default: none)
-  -d DEBUGLEV, --debug DEBUGLEV
-                        Debug value (0-9). Show working info. Default: 0
-  -l FILL, --fill FILL  Fill info string to lenght. Default: 16
-  -s, --show_case       Show test case file(s).
+    options:
+      -h, --help            show this help message and exit
+      -V, --version         Show version number
+      -o, --outp            Show communication with program
+      -A, --info            Show testcase file format info
+      -v, --verbose         increase verbocity (Default: none)
+      -d DEBUGLEV, --debug DEBUGLEV
+                            Debug value (0-9). Show working info. Default: 0
+      -l FILL, --fill FILL  Fill info string to lenght. Default: 16
+      -s, --show_case       Show test case file(s).
 
-For info on TestCase File Format use -A option. The file 'testcase.txt' is
-executed by default.
+    For info on TestCase File Format use -A option. The file 'testcase.txt' is
+    executed by default.
 
 ## Git
 

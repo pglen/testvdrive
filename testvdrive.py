@@ -193,7 +193,7 @@ def mainloop():
                 if "ERR" in err:
                     args.errcnt += 1
 
-pdesc = 'Test withh send/expect by executing sub commands from test case scripts.'
+pdesc = 'Test with send/expect by executing sub commands from test case scripts.'
 pform = "For info on TestCase File Format use -A option.\n" + \
         "The file 'testcase.txt' is executed by default."
 
