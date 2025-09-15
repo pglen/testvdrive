@@ -20,6 +20,7 @@ pipbuild:
 	./pip-build.py
 
 pipupload:
+	./pip-build.py
 	./pip-upload.sh
 
 git:
