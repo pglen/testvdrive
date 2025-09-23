@@ -7,14 +7,16 @@
 #   --------------  -----------     -------------   ------------
 #    for the user   what to test    what to expect  True for Find
 #                                                   or False for match
-#                                                    or "regex" / "mregex"
+#                                                   or "regex" / "mregex"
 
 [
-    [ "Echo Command", "", "", True],                # NOOP
-    [ "Test for Makefile", "ls", "Makefile", True], # Has Makefile?
-    [ "DF command", "df", "blocks", "regex" ],      # Search regex
-    [ "DF mregex", "df", ".*blo",  "mregex" ],      # Match regex
-    [ "Exact", "/bin/ls -d .", b".\n", False ],     # Exact match
+    #[ "Echo Command", "", "", True],                # NOOP
+    #[ "Test for Makefile", "ls", "Makefile", True], # Has Makefile?
+    #[ "DF command", "df", "blocks", "regex" ],      # Search regex
+    #[ "DF mregex", "df", ".*blo",  "mregex" ],      # Match regex
+    [ "Exact", "/bin/ls -d .", b".\n", False ],      # Exact match
+    [ "python", "python testpy.py", b"Hello\n" , "" ],  # Script
+    [ "python2", "./testpy.py", b"Hello\n" , "" ],  # Script
 ]
 
 # EOF

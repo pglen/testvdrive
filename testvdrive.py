@@ -78,6 +78,10 @@ def xdiff(actualx, expectx, findflag):
         Sensitive to find flag.
     '''
 
+    # Correct bad flag
+    if not findflag:
+        findflag = False
+
     if type(findflag) == type(""):
         if "mregex" in findflag :
             #print("Match regex", str(expectx), str(actualx))
@@ -95,6 +99,8 @@ def xdiff(actualx, expectx, findflag):
                 return"\033[31;1mERR\033[0m"
         else:
             print("Warn: Invalid find flag string", findflag)
+            return"\033[31;1mERR\033[0m"
+
     elif findflag:
         #print("Find", str(expectx), str(actualx))
         if str(expectx) in str(actualx):
@@ -142,22 +148,25 @@ def send_expect(context, sendx, expectx, findflag):
     if args.debuglev > 1:
         print("\033[32;1mGot: ", ret, "\033[0m")
 
+    if args.debuglev > 2:
+        print("\033[32;1mExpect: ", expectx, "\033[0m")
+
     err = xdiff(ret, expectx, findflag)
 
     # If no context, we do not want any printing
     if context:
         print(fill(context, args.fill), "\t", err)
 
-    if args.verbose > 1:
+    if args.verbose > 0:
         # On error tell us the expected result
-        if ret != expectx:
-            print("\033[34;1mGot:\033[0m\n", ret)
+        #if ret != expectx:
+        print("\033[34;1mGot:\033[0m\n", ret)
+
+    if args.verbose > 1:
+        #if ret != expectx:
+        print("\033[34;1mExpected:\033[0m\n", expectx)
 
     if args.verbose > 2:
-        if ret != expectx:
-            print("\033[34;1mExpected:\033[0m\n", expectx)
-
-    if args.verbose > 3:
         print("\033[34;1mSend\033[0m:", pp(sendx))
         #if ret != expectx:
         #    print("\033[34;1mDiff:\033[0m\n",
@@ -195,7 +204,7 @@ def mainloop():
             for aa in test_case_code:
                 err = send_expect(aa[0], aa[1], aa[2], aa[3])
                 #print("err", err)
-                if "ERR" in err:
+                if err and "ERR" in err:
                     args.errcnt += 1
 
 pdesc = 'Test with send/expect by executing sub commands from test case scripts.'
